@@ -5,7 +5,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({ selectedState }) => {
-  const [hoverIndex, setHoverIndex] = useState(null); // Track hovered slice
+  const [hoverIndex, setHoverIndex] = useState(null);
 
   if (!selectedState)
     return (
@@ -14,7 +14,6 @@ const PieChart = ({ selectedState }) => {
       </div>
     );
 
-  // ✅ Extract values from selected state
   const values = [
     selectedState["SalerTray"],
     selectedState["WIP_CPA"],
@@ -22,16 +21,15 @@ const PieChart = ({ selectedState }) => {
     selectedState["CreditPending"],
   ];
 
-  const total = values.reduce((sum, value) => sum + value, 0); // ✅ Calculate total
+  const total = values.reduce((sum, value) => sum + value, 0);
 
   const baseColors = [
-    "rgba(82, 76, 133, 1)", // Purple
-    "rgba(49, 51, 112, 1)", // Blue
-    "rgba(25, 3, 153, 1)", // Dark Blue
-    "rgba(92, 113, 205, 1)", // Light Blue
+    "rgba(82, 76, 133, 1)",
+    "rgba(49, 51, 112, 1)",
+    "rgba(25, 3, 153, 1)",
+    "rgba(92, 113, 205, 1)",
   ];
 
-  // ✅ Create Blurred Colors (Reduce Opacity)
   const blurredColors = baseColors.map((color) => color.replace("1)", "0.2)"));
 
   const data = {
@@ -39,13 +37,12 @@ const PieChart = ({ selectedState }) => {
     datasets: [
       {
         data: values,
-        backgroundColor: values.map(
-          (_, index) =>
-            hoverIndex === null
-              ? baseColors[index] // Normal colors if no hover
-              : hoverIndex === index
-              ? baseColors[index] // Keep hovered slice bright
-              : blurredColors[index] // Blur effect on non-hovered slices
+        backgroundColor: values.map((_, index) =>
+          hoverIndex === null
+            ? baseColors[index]
+            : hoverIndex === index
+            ? baseColors[index]
+            : blurredColors[index]
         ),
         borderWidth: 1,
         hoverOffset: 10,
@@ -59,7 +56,7 @@ const PieChart = ({ selectedState }) => {
         callbacks: {
           label: (tooltipItem) => {
             const value = tooltipItem.raw;
-            const percentage = ((value / total) * 100).toFixed(2); // ✅ Show percentage
+            const percentage = ((value / total) * 100).toFixed(2);
             return `${tooltipItem.label}: ${value} (${percentage}%)`;
           },
         },
@@ -70,9 +67,9 @@ const PieChart = ({ selectedState }) => {
     },
     onHover: (event, elements) => {
       if (elements.length > 0) {
-        setHoverIndex(elements[0].index); // ✅ Track hovered index
+        setHoverIndex(elements[0].index);
       } else {
-        setHoverIndex(null); // ✅ Reset when not hovering
+        setHoverIndex(null);
       }
     },
   };

@@ -8,7 +8,6 @@ const BranchTable = ({ selectedStateBranches }) => {
       </div>
     );
 
-  // ✅ Calculate summary values
   const totalLogins = selectedStateBranches.reduce(
     (sum, branch) => sum + branch["Application Login"],
     0
@@ -28,7 +27,6 @@ const BranchTable = ({ selectedStateBranches }) => {
 
   return (
     <div className="mt-6">
-      {/* ✅ Summary Cards */}
       <div className="flex justify-center gap-6 mb-6">
         <div className="bg-blue-500 text-white px-6 py-2 rounded-lg">
           LOGINS: {totalLogins}
@@ -44,7 +42,6 @@ const BranchTable = ({ selectedStateBranches }) => {
         </div>
       </div>
 
-      {/* ✅ Branch Data Table */}
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-blue-500 text-white">

@@ -48,7 +48,7 @@ const BarChart = ({ selectedStateBranches }) => {
         backgroundColor: "rgba(54, 162, 235, 0.8)",
         borderColor: "rgba(54, 162, 235, 1)",
         borderWidth: 1,
-        barThickness: 20, // ✅ Slimmer bars
+        barThickness: 20,
       },
       {
         label: "Sanction Count",
@@ -56,7 +56,7 @@ const BarChart = ({ selectedStateBranches }) => {
         backgroundColor: "rgba(255, 99, 132, 0.8)",
         borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 1,
-        barThickness: 20, // ✅ Slimmer bars
+        barThickness: 20,
       },
       {
         label: "Fresh Disbursement",
@@ -64,7 +64,7 @@ const BarChart = ({ selectedStateBranches }) => {
         backgroundColor: "rgba(75, 192, 192, 0.8)",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
-        barThickness: 20, // ✅ Slimmer bars
+        barThickness: 20,
       },
     ],
   };
@@ -83,7 +83,7 @@ const BarChart = ({ selectedStateBranches }) => {
     responsive: true,
     scales: {
       x: {
-        stacked: false, // ✅ Group bars per branch
+        stacked: false,
         ticks: { autoSkip: false },
       },
       y: {
